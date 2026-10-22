@@ -16,11 +16,12 @@
 
 ## 当前工程结构
 
-当前唯一保留的工程位于 `TDLAS_v1.5/`；仓库根目录中的 v1.4 源码、构建目录和重复发布资料已清理。以下工程路径和构建命令均以 `TDLAS_v1.5/` 为工作目录。
+当前开发版本为 `TDLAS_v1.6/`，由 v1.5 复制扩展摄像模组功能而来；`TDLAS_v1.5/` 保留作为原版，后续修改默认在 v1.6 进行。下文原有 DAQ/算法约定继续适用，构建命令的工作目录改为 `TDLAS_v1.6/`。v1.6 专属说明见 `TDLAS_v1.6/AGENTS.md` 和 `TDLAS_v1.6/PROJECT_STRUCTURE.md`。
 
 ```text
 TDLAS 测氢/
-└─ TDLAS_v1.5/
+├─ TDLAS_v1.5/                # 保留的原版工程及发布包
+└─ TDLAS_v1.6/                # 当前开发版本，新增 UVC 摄像窗口
    ├─ CMakeLists.txt           # CMake 配置、Qt/NI-DAQmx 依赖和目标定义
    ├─ app/、include/、src/     # 程序源码
    ├─ tests/                   # 硬件无关测试
@@ -104,7 +105,7 @@ AO 波形由采集线程内部生成一个完整周期的缓冲区，并用硬�
 
 ## 构建环境
 
-已验证的构建环境（命令在 `TDLAS_v1.5` 目录执行）：
+已验证的构建环境（当前命令在 `TDLAS_v1.6` 目录执行）：
 
 - Visual Studio 17 2022 x64
 - Qt 6.11.2，路径：`C:\Qt\6.11.2\msvc2022_64`
@@ -132,9 +133,9 @@ AO 波形由采集线程内部生成一个完整周期的缓冲区，并用硬�
 
 重新构建后的 Debug 可执行文件位置：
 
-`TDLAS_v1.5\build-msvc\Debug\tdlas_app.exe`
+`TDLAS_v1.6\build-msvc\Debug\tdlas_app.exe`
 
-当前可直接双击运行的 v1.5 发布包位于 `TDLAS_v1.5\TDLAS_v1.5发布包\`，包含 Qt、MSVC 运行库及 NI-DAQmx 的 `nicaiu.dll`；真实采集仍要求系统安装 NI-DAQmx 驱动。
+当前可直接双击运行的 v1.6 发布包位于 `TDLAS_v1.6\TDLAS_v1.6发布包\`，包含 Qt、Multimedia/FFmpeg、MSVC 运行库及 NI-DAQmx 的 `nicaiu.dll`；真实采集仍要求系统安装 NI-DAQmx 驱动。原 v1.5 发布包保留。
 
 运行时通常需要将以下目录加入 `PATH`：
 
