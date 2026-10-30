@@ -1,0 +1,7 @@
+/build/
+/artifacts/
+/data/
+/temp/
+/.taste-skill/
+/tools/local-env.json
+/*.obj

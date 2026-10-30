@@ -35,3 +35,21 @@ install_manifest.txt
 # Keep the v1.5 distribution ZIP, not its duplicate extracted copy
 /TDLAS_v1.5/TDLAS_v1.5发布包/TDLAS_v1.5发布包_测试版/
 
+# Current project local outputs and machine-specific configuration
+/TDLAS2.0/build/
+/TDLAS2.0/artifacts/
+/TDLAS2.0/data/
+/TDLAS2.0/temp/
+/TDLAS2.0/.taste-skill/
+/TDLAS2.0/tools/local-env.json
+
+# Local archives and design inputs are preserved on this workstation. Git
+# history already contains v1.5/v1.6; TDLAS2 keeps its final runtime assets.
+/旧版程序归档/
+/UI/
+/环境安装与编译验证_*.md
+/编译环境检查报告_*.md
+/编译入口说明.md
+/项目对话交接总结.md
+/索尼IMX415摄像头模组.pdf
+

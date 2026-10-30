@@ -1,0 +1,9 @@
+{
+  "qtRoot": "C:/Qt/6.8.3/msvc2022_64",
+  "cmakeRoot": "C:/Qt/Tools/CMake_64",
+  "vswhere": "C:/Program Files (x86)/Microsoft Visual Studio/Installer/vswhere.exe",
+  "windowsSdkVersion": "10.0.26100.0",
+  "windowsSdkRoot": "C:/Program Files (x86)/Windows Kits/10",
+  "daqmxInclude": "C:/Program Files (x86)/National Instruments/NI-DAQ/DAQmx ANSI C Dev/include",
+  "daqmxLibrary": "C:/Program Files (x86)/National Instruments/Shared/ExternalCompilerSupport/C/lib64/msvc/NIDAQmx.lib"
+}

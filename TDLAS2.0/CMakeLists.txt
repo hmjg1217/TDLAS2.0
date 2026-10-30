@@ -1,0 +1,107 @@
+cmake_minimum_required(VERSION 3.24)
+project(TDLAS2 VERSION 2.0.0 LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+option(TDLAS_BUILD_TESTS "Build hardware-independent tests" ON)
+set(DAQMX_INCLUDE_DIR "" CACHE PATH "Directory containing NIDAQmx.h")
+set(DAQMX_LIBRARY "" CACHE FILEPATH "64-bit MSVC NIDAQmx import library")
+find_path(DAQMX_INCLUDE_DIR NAMES NIDAQmx.h HINTS
+    "C:/Program Files (x86)/National Instruments/NI-DAQ/DAQmx ANSI C Dev/include"
+    "C:/Program Files/National Instruments/NI-DAQ/DAQmx ANSI C Dev/include")
+find_library(DAQMX_LIBRARY NAMES NIDAQmx nidaqmx HINTS
+    "C:/Program Files (x86)/National Instruments/Shared/ExternalCompilerSupport/C/lib64/msvc"
+    "C:/Program Files/National Instruments/Shared/ExternalCompilerSupport/C/lib64/msvc")
+if(NOT DAQMX_INCLUDE_DIR OR NOT DAQMX_LIBRARY)
+    message(FATAL_ERROR "TDLAS2 requires the NI-DAQmx ANSI C SDK: NIDAQmx.h and the x64 MSVC NIDAQmx import library were not found.")
+endif()
+find_package(Qt6 6.8 REQUIRED COMPONENTS Core Widgets Charts Multimedia)
+if(MSVC)
+    add_compile_options(/utf-8 /W4 /permissive-)
+endif()
+add_library(tdlas_core STATIC src/core/contracts.cpp src/core/sample_router.cpp src/core/result_history.cpp)
+target_include_directories(tdlas_core PUBLIC include)
+add_library(tdlas_processing STATIC src/processing/tdlas_processor.cpp include/processing/tdlas_processor.h)
+target_link_libraries(tdlas_processing PUBLIC tdlas_core)
+add_library(tdlas_daq STATIC
+    src/daq/simulation_source.cpp
+    src/daq/fake_daq_backend.cpp
+    src/daq/ni_daq_backend.cpp
+    include/daq/daq_backend.h
+    include/daq/sample_source.h)
+target_link_libraries(tdlas_daq PUBLIC tdlas_core)
+target_include_directories(tdlas_daq PRIVATE "${DAQMX_INCLUDE_DIR}")
+target_link_libraries(tdlas_daq PRIVATE "${DAQMX_LIBRARY}")
+target_compile_definitions(tdlas_daq PRIVATE TDLAS_HAS_DAQMX=1)
+add_library(tdlas_storage STATIC src/storage/data_storage.cpp include/storage/data_storage.h)
+target_link_libraries(tdlas_storage PUBLIC tdlas_core Qt6::Core)
+add_library(tdlas_camera STATIC src/camera/camera_session.cpp include/camera/camera_session.h)
+target_include_directories(tdlas_camera PUBLIC include)
+target_link_libraries(tdlas_camera PUBLIC Qt6::Core Qt6::Multimedia)
+add_library(tdlas_runtime STATIC src/runtime/acquisition_runtime.cpp include/runtime/acquisition_runtime.h)
+target_link_libraries(tdlas_runtime PUBLIC tdlas_core tdlas_storage Qt6::Core)
+add_library(tdlas_ui STATIC
+    src/ui/main_window.cpp
+    src/ui/interactive_chart_view.cpp
+    src/ui/startup_dialog.cpp
+    include/ui/application_role.h
+    include/ui/main_window.h
+    include/ui/interactive_chart_view.h
+    include/ui/startup_dialog.h
+    resources/resources.qrc)
+target_link_libraries(tdlas_ui PUBLIC tdlas_runtime tdlas_daq tdlas_processing tdlas_camera Qt6::Widgets Qt6::Charts)
+add_executable(tdlas_app WIN32 app/main.cpp)
+target_link_libraries(tdlas_app PRIVATE tdlas_ui)
+if(WIN32)
+    target_sources(tdlas_app PRIVATE resources/tdlas_app.rc)
+endif()
+if(TDLAS_BUILD_TESTS)
+    enable_testing()
+    find_package(Qt6 REQUIRED COMPONENTS Test)
+    add_executable(result_test tests/result_test.cpp)
+    target_link_libraries(result_test PRIVATE tdlas_core Qt6::Test)
+    add_test(NAME complete_results_and_history COMMAND result_test -o "${CMAKE_BINARY_DIR}/test-results/results-$<CONFIG>.xml,junitxml")
+    set_tests_properties(complete_results_and_history PROPERTIES TIMEOUT 45)
+    add_executable(storage_test tests/storage_test.cpp)
+    target_link_libraries(storage_test PRIVATE tdlas_storage Qt6::Test)
+    add_test(NAME bounded_archive_and_export COMMAND storage_test -o "${CMAKE_BINARY_DIR}/test-results/storage-$<CONFIG>.xml,junitxml")
+    set_tests_properties(bounded_archive_and_export PROPERTIES TIMEOUT 45)
+    add_executable(processing_test tests/processing_test.cpp)
+    target_link_libraries(processing_test PRIVATE tdlas_processing tdlas_runtime Qt6::Test)
+    add_test(NAME legacy_processing_adapter COMMAND processing_test -o "${CMAKE_BINARY_DIR}/test-results/processing-$<CONFIG>.xml,junitxml")
+    set_tests_properties(legacy_processing_adapter PROPERTIES TIMEOUT 45)
+    add_executable(core_test tests/core_test.cpp)
+    target_link_libraries(core_test PRIVATE tdlas_core Qt6::Test)
+    file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/test-results")
+    add_test(NAME contracts_and_router COMMAND core_test -o "${CMAKE_BINARY_DIR}/test-results/core-$<CONFIG>.xml,junitxml")
+    add_executable(runtime_test tests/runtime_test.cpp)
+    add_executable(simulation_test tests/simulation_test.cpp)
+    target_link_libraries(simulation_test PRIVATE tdlas_daq Qt6::Test)
+    add_test(NAME simulation_backend COMMAND simulation_test -o "${CMAKE_BINARY_DIR}/test-results/simulation-$<CONFIG>.xml,junitxml")
+    set_tests_properties(simulation_backend PROPERTIES TIMEOUT 15)
+    add_executable(daq_test tests/daq_test.cpp)
+    target_link_libraries(daq_test PRIVATE tdlas_runtime tdlas_daq Qt6::Test)
+    target_compile_definitions(daq_test PRIVATE TDLAS_EXPECT_DAQMX=1)
+    add_test(NAME daq_backends_and_lifecycle COMMAND daq_test -o "${CMAKE_BINARY_DIR}/test-results/daq-$<CONFIG>.xml,junitxml")
+    set_tests_properties(daq_backends_and_lifecycle PROPERTIES TIMEOUT 30)
+    add_executable(camera_test tests/camera_test.cpp)
+    target_link_libraries(camera_test PRIVATE tdlas_camera Qt6::Test)
+    add_test(NAME camera_session_and_synthetic_recording COMMAND camera_test -o "${CMAKE_BINARY_DIR}/test-results/camera-$<CONFIG>.xml,junitxml")
+    set_tests_properties(camera_session_and_synthetic_recording PROPERTIES TIMEOUT 45)
+    target_link_libraries(runtime_test PRIVATE tdlas_runtime tdlas_daq Qt6::Test)
+    add_test(NAME runtime_lifecycle COMMAND runtime_test -o "${CMAKE_BINARY_DIR}/test-results/runtime-$<CONFIG>.xml,junitxml")
+    add_executable(ui_test tests/ui_test.cpp)
+    target_link_libraries(ui_test PRIVATE tdlas_ui Qt6::Test)
+    add_test(NAME ui_structure COMMAND ui_test -o "${CMAKE_BINARY_DIR}/test-results/ui-$<CONFIG>.xml,junitxml")
+    set_tests_properties(ui_structure PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen;QT_SCALE_FACTOR=1;QT_QPA_FONTDIR=$ENV{WINDIR}/Fonts")
+    foreach(scale IN ITEMS 1.25 1.5 2)
+        add_test(NAME ui_scale_${scale} COMMAND ui_test layoutAndThemes keyboardScrollAndValidation -o "${CMAKE_BINARY_DIR}/test-results/ui-${scale}-$<CONFIG>.xml,junitxml")
+        set_tests_properties(ui_scale_${scale} PROPERTIES TIMEOUT 45 ENVIRONMENT "QT_QPA_PLATFORM=offscreen;QT_SCALE_FACTOR=${scale};QT_QPA_FONTDIR=$ENV{WINDIR}/Fonts;TDLAS_TEST_ARTIFACTS=${CMAKE_SOURCE_DIR}/artifacts/$<LOWER_CASE:$<CONFIG>>/ui-scale-${scale}")
+    endforeach()
+    set_tests_properties(contracts_and_router runtime_lifecycle PROPERTIES TIMEOUT 45)
+    # The UI suite captures every role, theme and desktop size. The exact
+    # uploaded login/splash artwork makes those native grabs more expensive
+    # than the former derived backgrounds on slower Windows graphics stacks.
+    set_tests_properties(ui_structure PROPERTIES TIMEOUT 180)
+endif()

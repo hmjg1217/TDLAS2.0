@@ -1,0 +1,29 @@
+{
+  "purpose": "Frozen numerical comparison for the reviewed v1.6 C++ TDLASProcessor; not a physical calibration reference.",
+  "capturedAt": "2026-10-28",
+  "compiler": "MSVC 2022 x64 / C++17 / Qt 6.8.3 Debug",
+  "source": {
+    "implementation": "TDLAS_v1.6/src/processing/tdlas_processor.cpp",
+    "implementationSha256": "E245408F28A7BF6E9889E51C47923AD5DA0C8A48FB1E44B4C5D0FEC519F99694",
+    "header": "TDLAS_v1.6/include/processing/tdlas_processor.h",
+    "headerSha256": "E2CD289AB04EFFFC5BB6390EA5A8CD7AAF090780D56C55F114BB820F6A3DA8F4"
+  },
+  "config": {
+    "windowSamples": 800,
+    "samplesPerCycle": 200,
+    "averagedCyclesPerSpectrum": 4,
+    "averagedSpectra": 1
+  },
+  "inputGenerator": "For each cycle and sample: phase=sample/199; value=1.05 - 0.4*exp(-0.5*((phase-0.58)/0.065)^2) + (sample==0?0.02:0) + 0.0002*cycle.",
+  "expected": {
+    "pointCount": 122,
+    "firstAbsorbance": -0.021487667374973665,
+    "middleAbsorbance": -0.015674740603855326,
+    "lastAbsorbance": 0.0051944692415708477,
+    "observedPeak": 0.017193038676769822,
+    "observedPeakIndex": 76,
+    "legacyFittedPeak": 0,
+    "legacyIntensityPercent": 1.3482829999516444
+  },
+  "calibrationStatus": "unconfirmed"
+}

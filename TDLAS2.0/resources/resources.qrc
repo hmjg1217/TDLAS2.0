@@ -1,0 +1,28 @@
+<RCC>
+    <qresource prefix="/">
+        <file>design-tokens.json</file>
+    </qresource>
+    <qresource prefix="/ui">
+        <file alias="login_screen.png">ui/login_screen.png</file>
+        <file alias="startup_splash.png">ui/startup_splash.png</file>
+    </qresource>
+    <qresource prefix="/icons">
+        <file alias="tdlas_hydrogen.png">tdlas_hydrogen.png</file>
+        <file alias="tdlas_hydrogen.ico">tdlas_hydrogen.ico</file>
+    </qresource>
+    <qresource prefix="/brand">
+        <file alias="djquantum_company_logo.jpg">djquantum_company_logo.jpg</file>
+        <file alias="laser-mark.svg">icons/laser-mark.svg</file>
+    </qresource>
+    <qresource prefix="/metrics">
+        <file alias="absorbance.svg">icons/metric-absorbance.svg</file>
+        <file alias="intensity.svg">icons/metric-intensity.svg</file>
+        <file alias="concentration.svg">icons/metric-concentration.svg</file>
+    </qresource>
+    <qresource prefix="/tabs">
+        <file alias="customer.svg">tabs/customer.svg</file>
+        <file alias="debug.svg">tabs/debug.svg</file>
+        <file alias="peak.svg">tabs/peak.svg</file>
+        <file alias="camera.svg">tabs/camera.svg</file>
+    </qresource>
+</RCC>
