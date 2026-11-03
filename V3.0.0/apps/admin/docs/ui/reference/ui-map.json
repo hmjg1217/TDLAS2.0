@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "1.0.0",
+  "coordinateSpace": "source-image-device-pixels",
+  "normalizationRule": "x/sourceWidth, y/sourceHeight, width/sourceWidth, height/sourceHeight",
+  "note": "All region rectangles are visual estimates; source canvas dimensions are exact.",
+  "screens": [
+    {
+      "refId": "A-01",
+      "sourceSize": {"width": 1672, "height": 941, "confidence": "EXACT"},
+      "regions": [
+        {"id": "top-status-bar", "rect": [0, 0, 1672, 75], "confidence": "ESTIMATED"},
+        {"id": "side-action-rail", "rect": [0, 75, 96, 866], "confidence": "ESTIMATED"},
+        {"id": "page-tab-bar", "rect": [96, 75, 1576, 76], "confidence": "ESTIMATED"},
+        {"id": "camera-panel", "rect": [113, 157, 681, 397], "confidence": "ESTIMATED"},
+        {"id": "fv-panel", "rect": [811, 157, 842, 397], "confidence": "ESTIMATED"},
+        {"id": "peak-trend-panel", "rect": [113, 572, 980, 345], "confidence": "ESTIMATED"},
+        {"id": "results-panel", "rect": [1109, 572, 544, 345], "confidence": "ESTIMATED"}
+      ]
+    },
+    {
+      "refId": "A-02",
+      "sourceSize": {"width": 1672, "height": 941, "confidence": "EXACT"},
+      "regions": [
+        {"id": "parameter-drawer", "rect": [98, 78, 424, 840], "confidence": "ESTIMATED"},
+        {"id": "parameter-form", "rect": [116, 151, 386, 659], "confidence": "ESTIMATED"},
+        {"id": "parameter-actions", "rect": [121, 842, 381, 55], "confidence": "ESTIMATED"},
+        {"id": "underlay-main", "rect": [98, 78, 1574, 863], "confidence": "ESTIMATED"}
+      ]
+    },
+    {
+      "refId": "A-03",
+      "sourceSize": {"width": 1672, "height": 941, "confidence": "EXACT"},
+      "regions": [
+        {"id": "chart-raw", "rect": [113, 157, 751, 345], "confidence": "ESTIMATED"},
+        {"id": "chart-fit", "rect": [881, 157, 775, 345], "confidence": "ESTIMATED"},
+        {"id": "chart-fv", "rect": [113, 515, 751, 326], "confidence": "ESTIMATED"},
+        {"id": "chart-peak-history", "rect": [881, 515, 775, 326], "confidence": "ESTIMATED"},
+        {"id": "result-strip", "rect": [113, 854, 1543, 70], "confidence": "ESTIMATED"}
+      ]
+    },
+    {
+      "refId": "A-04",
+      "sourceSize": {"width": 1672, "height": 941, "confidence": "EXACT"},
+      "regions": [
+        {"id": "filter-toolbar", "rect": [107, 125, 1549, 91], "confidence": "ESTIMATED"},
+        {"id": "peak-trend", "rect": [107, 225, 1549, 345], "confidence": "ESTIMATED"},
+        {"id": "summary-metrics", "rect": [801, 245, 835, 78], "confidence": "ESTIMATED"},
+        {"id": "peak-record-table", "rect": [107, 580, 1549, 320], "confidence": "ESTIMATED"}
+      ]
+    },
+    {
+      "refId": "A-05",
+      "sourceSize": {"width": 1671, "height": 941, "confidence": "EXACT"},
+      "regions": [
+        {"id": "camera-preview-column", "rect": [113, 157, 946, 747], "confidence": "ESTIMATED"},
+        {"id": "camera-control-column", "rect": [1074, 157, 578, 747], "confidence": "ESTIMATED"},
+        {"id": "capture-actions", "rect": [113, 790, 946, 114], "confidence": "ESTIMATED"},
+        {"id": "media-list", "rect": [1074, 692, 578, 212], "confidence": "ESTIMATED"}
+      ]
+    },
+    {
+      "refId": "A-06",
+      "sourceSize": {"width": 1671, "height": 941, "confidence": "EXACT"},
+      "regions": [
+        {"id": "camera-page-underlay", "rect": [97, 79, 1574, 862], "confidence": "ESTIMATED"},
+        {"id": "motion-zoom-panel", "rect": [1189, 260, 451, 341], "confidence": "ESTIMATED"},
+        {"id": "direction-pad", "rect": [1220, 325, 220, 250], "confidence": "ESTIMATED"},
+        {"id": "zoom-controls", "rect": [1465, 325, 148, 250], "confidence": "ESTIMATED"}
+      ]
+    }
+  ]
+}

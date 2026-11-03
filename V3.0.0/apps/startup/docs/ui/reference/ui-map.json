@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "1.0.0",
+  "coordinateSpace": "source-image-device-pixels",
+  "normalizationRule": "x/sourceWidth, y/sourceHeight, width/sourceWidth, height/sourceHeight",
+  "screens": [
+    {
+      "refId": "S-01",
+      "sourceSize": {
+        "width": 1774,
+        "height": 887,
+        "confidence": "EXACT"
+      },
+      "regions": [
+        {
+          "id": "startup-card",
+          "rect": [52, 119, 1672, 718],
+          "confidence": "ESTIMATED"
+        },
+        {
+          "id": "brand-header",
+          "rect": [137, 188, 520, 151],
+          "confidence": "ESTIMATED"
+        },
+        {
+          "id": "product-title",
+          "rect": [137, 430, 744, 103],
+          "confidence": "ESTIMATED"
+        },
+        {
+          "id": "product-descriptor",
+          "rect": [137, 548, 620, 55],
+          "confidence": "ESTIMATED"
+        },
+        {
+          "id": "spectroscopy-artwork",
+          "rect": [696, 60, 1028, 776],
+          "confidence": "ESTIMATED"
+        },
+        {
+          "id": "attribution",
+          "rect": [125, 740, 270, 45],
+          "confidence": "ESTIMATED"
+        }
+      ]
+    },
+    {
+      "refId": "S-02",
+      "sourceSize": {
+        "width": 1671,
+        "height": 941,
+        "confidence": "EXACT"
+      },
+      "regions": [
+        {
+          "id": "login-card",
+          "rect": [52, 69, 1566, 807],
+          "confidence": "ESTIMATED"
+        },
+        {
+          "id": "illustration-region",
+          "rect": [52, 69, 970, 807],
+          "confidence": "ESTIMATED"
+        },
+        {
+          "id": "authentication-region",
+          "rect": [1010, 69, 608, 807],
+          "confidence": "ESTIMATED"
+        },
+        {
+          "id": "brand-header",
+          "rect": [1080, 185, 385, 112],
+          "confidence": "ESTIMATED"
+        },
+        {
+          "id": "product-title",
+          "rect": [1080, 345, 445, 112],
+          "confidence": "ESTIMATED"
+        },
+        {
+          "id": "username-field",
+          "rect": [1085, 503, 465, 65],
+          "confidence": "ESTIMATED",
+          "qtCandidate": "QLineEdit"
+        },
+        {
+          "id": "password-field",
+          "rect": [1085, 588, 465, 65],
+          "confidence": "ESTIMATED",
+          "qtCandidate": "QLineEdit::Password"
+        },
+        {
+          "id": "login-button",
+          "rect": [1087, 689, 464, 61],
+          "confidence": "ESTIMATED",
+          "qtCandidate": "QPushButton"
+        }
+      ]
+    }
+  ]
+}

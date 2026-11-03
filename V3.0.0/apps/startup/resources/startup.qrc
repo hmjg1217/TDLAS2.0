@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/reference">
+        <file alias="startup_splash.png">reference/startup_splash.png</file>
+        <file alias="login_reference.png">reference/login_reference.png</file>
+    </qresource>
+    <qresource prefix="/styles">
+        <file alias="startup.qss">styles/startup.qss</file>
+    </qresource>
+</RCC>

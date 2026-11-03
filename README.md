@@ -13,3 +13,7 @@ TDLAS 测氢 Windows 桌面程序，使用 C++17、Qt 6 Widgets/Charts/Multimedi
 目标机须为 64 位 Windows，并安装与采集卡匹配的 NI-DAQmx 驱动。Qt、FFmpeg 和 MSVC 运行库由 Release 部署脚本一并打包。
 
 详细信息见 [项目说明](TDLAS2.0/README.md)、[用户使用说明](TDLAS2.0/docs/用户使用说明.md) 和 [实施计划](TDLAS2.0/docs/实施计划.md)。v1.5、v1.6 保留在 Git 历史和标签中，不再复制到当前源码树。
+
+## V3.0.0 界面整合版
+
+[`V3.0.0/`](V3.0.0/) 保存启动/登录、管理员端和客户端三个 Qt Widgets 样板的整合工程。当前临时登录账号为管理员 `00/00`、用户 `01/01`；后续可在认证实现中替换为正式底层账号系统。

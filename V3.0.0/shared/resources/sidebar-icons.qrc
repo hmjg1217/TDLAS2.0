@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/sidebar-icons">
+        <file alias="home.png">sidebar-icons/compiled/home.png</file>
+        <file alias="parameters.png">sidebar-icons/compiled/parameters.png</file>
+        <file alias="start-acquisition.png">sidebar-icons/compiled/start-acquisition.png</file>
+        <file alias="stop-acquisition.png">sidebar-icons/compiled/stop-acquisition.png</file>
+        <file alias="save-data.png">sidebar-icons/compiled/save-data.png</file>
+    </qresource>
+</RCC>

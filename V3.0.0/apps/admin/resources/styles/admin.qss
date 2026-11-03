@@ -1,0 +1,322 @@
+QWidget#adminTemplateRoot,
+QWidget#workspaceBody,
+QWidget#mainPage,
+QWidget#debugPage,
+QWidget#peakPage,
+QWidget#cameraPage,
+QStackedWidget#pageStack {
+    background: #edf7ff;
+    color: #152c49;
+    font-family: "Microsoft YaHei UI", "Segoe UI";
+    font-size: 13px;
+}
+
+QFrame#topBar {
+    background: #fbfdff;
+    border-bottom: 1px solid #d7e8f8;
+}
+
+QLabel[uiRole="brand"] {
+    color: #0754c7;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+QLabel[uiRole="statusPill"], QLabel[uiRole="templateNotice"] {
+    background: #f1f7fc;
+    border: 1px solid #e2edf7;
+    border-radius: 14px;
+    padding: 6px 12px;
+    color: #34506f;
+    font-weight: 600;
+}
+
+QLabel[uiRole="modePill"] {
+    background: #087cf0;
+    border-radius: 14px;
+    color: white;
+    padding: 7px 15px;
+    font-weight: 700;
+}
+
+QPushButton[uiRole="topAction"] {
+    background: #f8fbff;
+    border: 1px solid #e7f0f8;
+    border-radius: 16px;
+    color: #0a55b8;
+    min-height: 32px;
+    padding: 0 12px;
+    font-weight: 600;
+}
+
+QPushButton[uiRole="topAction"]:hover,
+QPushButton[uiRole="secondary"]:hover,
+QPushButton[uiRole="link"]:hover {
+    background: #e6f3ff;
+    border-color: #81baf4;
+}
+
+QFrame#sideRail {
+    background: #0755a9;
+    border-right: 1px solid #08498f;
+}
+
+QPushButton[uiRole="railAction"] {
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    color: #e7f4ff;
+    font-size: 15px;
+    padding: 7px 2px;
+}
+
+QPushButton[uiRole="railAction"]:hover,
+QPushButton[uiRole="railAction"]:checked {
+    background: rgba(225, 242, 255, 220);
+    color: #0563d8;
+    font-weight: 700;
+}
+
+QFrame#tabBar {
+    background: #dceeff;
+    border: none;
+}
+
+QPushButton[uiRole="topTab"] {
+    background: rgba(255, 255, 255, 150);
+    border: 1px solid rgba(255, 255, 255, 110);
+    border-radius: 10px;
+    color: #173556;
+    min-height: 42px;
+    padding: 0 18px;
+    font-size: 16px;
+    font-weight: 650;
+}
+
+QPushButton[uiRole="topTab"]:hover {
+    background: #eff8ff;
+}
+
+QPushButton[uiRole="topTab"]:checked {
+    color: white;
+    border-color: #0a82f4;
+    background: qlineargradient(x1:0,y1:0,x2:1,y2:0,stop:0 #08a6f1,stop:1 #0672ed);
+}
+
+QFrame[uiRole="panel"], QFrame[uiRole="filterBar"], QFrame[uiRole="captureBar"] {
+    background: #ffffff;
+    border: 1px solid #dbeaf6;
+    border-radius: 11px;
+}
+
+QLabel[uiRole="panelTitle"] {
+    background: #edf7ff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: #17314d;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+QFrame[uiRole="metricRow"] {
+    background: #fbfdff;
+    border: 1px solid #edf3f8;
+    border-radius: 10px;
+}
+
+QLabel[uiRole="metricName"] {
+    color: #1d3857;
+    font-size: 15px;
+    font-weight: 650;
+}
+
+QLabel[uiRole="metricValue"] {
+    color: #0875e6;
+    font-size: 22px;
+    font-weight: 750;
+}
+
+QFrame[uiRole="resultStrip"] {
+    background: #ffffff;
+    border: 1px solid #dbeaf6;
+    border-radius: 10px;
+}
+
+QLabel[uiRole="stripMetric"] {
+    color: #0873df;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 7px 16px;
+    border-right: 1px solid #cfdef0;
+}
+
+QLabel[uiRole="fieldLabel"], QLabel[uiRole="statsLine"] {
+    color: #213a56;
+    font-weight: 650;
+}
+
+QLabel[uiRole="statsLine"] {
+    color: #476585;
+    padding: 5px;
+}
+
+QPushButton[uiRole="primary"], QPushButton[uiRole="secondary"], QPushButton[uiRole="link"] {
+    min-height: 34px;
+    border-radius: 7px;
+    padding: 0 14px;
+    font-weight: 650;
+}
+
+QPushButton[uiRole="primary"] {
+    background: #087cf0;
+    border: 1px solid #087cf0;
+    color: white;
+}
+
+QPushButton[uiRole="primary"]:hover {
+    background: #0792f2;
+}
+
+QPushButton[uiRole="secondary"] {
+    background: #f8fbff;
+    border: 1px solid #cfe2f5;
+    color: #0965cd;
+}
+
+QPushButton[uiRole="secondary"]:disabled {
+    background: #f1f4f7;
+    border-color: #e4e9ee;
+    color: #a5b1bd;
+}
+
+QPushButton[uiRole="link"] {
+    background: transparent;
+    border: none;
+    color: #0876e8;
+}
+
+QComboBox, QSpinBox, QDoubleSpinBox {
+    background: #fbfdff;
+    border: 1px solid #cee2f5;
+    border-radius: 6px;
+    min-height: 32px;
+    padding: 0 8px;
+    selection-background-color: #0a80ed;
+}
+
+QComboBox:focus, QSpinBox:focus, QDoubleSpinBox:focus {
+    border: 2px solid #248eef;
+}
+
+QCheckBox {
+    spacing: 7px;
+    color: #1f3854;
+    font-weight: 600;
+}
+
+QSlider::groove:horizontal {
+    height: 6px;
+    background: #cbdbee;
+    border-radius: 3px;
+}
+
+QSlider::sub-page:horizontal {
+    background: #0a80ef;
+    border-radius: 3px;
+}
+
+QSlider::handle:horizontal {
+    background: #ffffff;
+    border: 1px solid #bed4ea;
+    width: 18px;
+    margin: -7px 0;
+    border-radius: 9px;
+}
+
+QTableWidget#peakRecordTable {
+    background: white;
+    alternate-background-color: #f7fbff;
+    border: none;
+    gridline-color: #dbe8f3;
+    selection-background-color: #d9ecff;
+    selection-color: #143759;
+}
+
+QHeaderView::section {
+    background: #e9f4ff;
+    border: none;
+    border-right: 1px solid #d3e4f2;
+    border-bottom: 1px solid #d3e4f2;
+    min-height: 30px;
+    color: #264564;
+    font-weight: 700;
+}
+
+QFrame#parameterDrawer, QFrame#movementPanel {
+    background: #f9fdff;
+    border: 1px solid #b9d9f5;
+    border-radius: 0 0 14px 0;
+}
+
+QFrame#movementPanel {
+    border-radius: 14px;
+}
+
+QLabel[uiRole="drawerTitle"] {
+    color: #102b48;
+    font-size: 19px;
+    font-weight: 750;
+}
+
+QPushButton[uiRole="iconAction"] {
+    background: transparent;
+    border: none;
+    color: #075ccc;
+    font-size: 24px;
+}
+
+QPushButton[uiRole="iconAction"]:hover {
+    background: #e4f2ff;
+    border-radius: 17px;
+}
+
+QPushButton[uiRole="movement"] {
+    background: #f4f9ff;
+    border: 1px solid #bddbf7;
+    border-radius: 9px;
+    color: #0a68d8;
+    min-width: 62px;
+    min-height: 54px;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+QPushButton[uiRole="movement"]:hover,
+QPushButton[uiRole="movement"]:pressed {
+    background: #dceeff;
+    border-color: #308fe8;
+}
+
+QPushButton[uiRole="thumbnail"] {
+    background: #eef7ff;
+    border: 1px solid #d3e6f7;
+    border-radius: 8px;
+    color: #294966;
+    min-height: 72px;
+    padding: 5px;
+}
+
+QPushButton[uiRole="thumbnail"]:hover {
+    border: 2px solid #1684ee;
+}
+
+QScrollBar:vertical {
+    width: 10px;
+    background: #edf5fb;
+}
+
+QScrollBar::handle:vertical {
+    background: #b5cee3;
+    min-height: 28px;
+    border-radius: 5px;
+}

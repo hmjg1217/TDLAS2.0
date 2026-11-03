@@ -1,0 +1,326 @@
+{
+  "schemaVersion": "1.0.0",
+  "mode": "system",
+  "metadata": {
+    "title": "TDLAS administrator workspace visual system",
+    "generatedAt": "2026-11-02",
+    "skill": "arx-ui-spec",
+    "skillVersion": "unversioned-local",
+    "companionSkill": "gpt-ui-to-qt-spec@1.0.0",
+    "status": "DRAFT"
+  },
+  "source": {
+    "type": "raster-reference-set",
+    "files": [
+      {
+        "refId": "A-01",
+        "path": "../../../resources/reference/a01-main.png",
+        "purpose": "administrator main default state",
+        "pixelWidth": 1672,
+        "pixelHeight": 941,
+        "pixelDimensionsConfidence": "EXACT",
+        "sha256": "9B8ED536D399FC3C10B1EE17B925A21D7E3B5A8C39F4A9861CDC4336D6C7FB75"
+      },
+      {
+        "refId": "A-02",
+        "path": "../../../resources/reference/a02-main-parameters.png",
+        "purpose": "main state with acquisition-parameter drawer",
+        "pixelWidth": 1672,
+        "pixelHeight": 941,
+        "pixelDimensionsConfidence": "EXACT",
+        "sha256": "8880992D1220C2EED0F0D5C9C9FABB1CDAF53E4E3216E13A3C892E2EFDC277EA"
+      },
+      {
+        "refId": "A-03",
+        "path": "../../../resources/reference/a03-debug.png",
+        "purpose": "debug dashboard with four charts",
+        "pixelWidth": 1672,
+        "pixelHeight": 941,
+        "pixelDimensionsConfidence": "EXACT",
+        "sha256": "5883A7ABED36B3CACE36A3B59362523784FD5EDB8864BE836938BE83CC1D612B"
+      },
+      {
+        "refId": "A-04",
+        "path": "../../../resources/reference/a04-peak-data.png",
+        "purpose": "peak trend, filters, summary and record table",
+        "pixelWidth": 1672,
+        "pixelHeight": 941,
+        "pixelDimensionsConfidence": "EXACT",
+        "sha256": "7CF0F3930D0B881A7A0939E7841327E7B20175A23FC81D26C3197B03A40AD47B"
+      },
+      {
+        "refId": "A-05",
+        "path": "../../../resources/reference/a05-camera.png",
+        "purpose": "camera page default state",
+        "pixelWidth": 1671,
+        "pixelHeight": 941,
+        "pixelDimensionsConfidence": "EXACT",
+        "sha256": "65BB5BB085705DC304D5D80CEACB5B052FB8970FD3FCD71A4732EB3485498AF8"
+      },
+      {
+        "refId": "A-06",
+        "path": "../../../resources/reference/a06-camera-motion.png",
+        "purpose": "camera page with motion and zoom panel",
+        "pixelWidth": 1671,
+        "pixelHeight": 941,
+        "pixelDimensionsConfidence": "EXACT",
+        "sha256": "77A205BD34776B0C75B5E5C4E56C440ECB59C2E0C2CDF0E1923C163F0CEB3A6E"
+      }
+    ],
+    "limitations": [
+      "Raster dimensions do not establish Qt logical pixels, client area, DPR, Windows scaling or exact fonts.",
+      "Only visible default and overlay states are evidenced; hidden hover, focus, disabled, loading and error states are not source facts.",
+      "The images do not prove permissions, NI device protocol, acquisition timing, camera ownership, algorithm validity, units or calibration.",
+      "Reference images remain evidence only and are not compiled as full-screen backgrounds."
+    ]
+  },
+  "screenInventory": [
+    {
+      "screenId": "administrator-main",
+      "refId": "A-01",
+      "summary": "Shared shell with camera preview, FV curve, peak trend and three result metrics.",
+      "viewportClass": "desktop-raster",
+      "viewportConfidence": "EXACT"
+    },
+    {
+      "screenId": "administrator-main-parameters",
+      "refId": "A-02",
+      "summary": "The main page remains in place while an acquisition-parameter drawer overlays its left side.",
+      "viewportClass": "desktop-raster",
+      "viewportConfidence": "EXACT"
+    },
+    {
+      "screenId": "administrator-debug",
+      "refId": "A-03",
+      "summary": "Equal 2 by 2 chart grid and a bottom summary strip.",
+      "viewportClass": "desktop-raster",
+      "viewportConfidence": "EXACT"
+    },
+    {
+      "screenId": "administrator-peak-data",
+      "refId": "A-04",
+      "summary": "Filter toolbar, peak trend, summary metrics and traceable PeakRecord table.",
+      "viewportClass": "desktop-raster",
+      "viewportConfidence": "EXACT"
+    },
+    {
+      "screenId": "administrator-camera",
+      "refId": "A-05",
+      "summary": "Large preview with capture actions plus device, image and media controls.",
+      "viewportClass": "desktop-raster",
+      "viewportConfidence": "EXACT"
+    },
+    {
+      "screenId": "administrator-camera-motion",
+      "refId": "A-06",
+      "summary": "Camera page with a non-modal motion and zoom overlay.",
+      "viewportClass": "desktop-raster",
+      "viewportConfidence": "EXACT"
+    }
+  ],
+  "layout": {
+    "primitives": [
+      {
+        "id": "application-shell",
+        "rule": "Persistent top status bar, left action rail, horizontal page tabs and a stacked content workspace.",
+        "confidence": "INFERRED"
+      },
+      {
+        "id": "card-grid",
+        "rule": "Use Qt layouts with paired panels and consistent gaps; avoid screenshot coordinates for normal page content.",
+        "confidence": "INFERRED"
+      },
+      {
+        "id": "overlay-drawer",
+        "rule": "Parameter and motion controls overlay the current page without causing the underlying page layout to reflow.",
+        "confidence": "INFERRED"
+      },
+      {
+        "id": "debug-four-up",
+        "rule": "Maintain an equal-width and equal-height 2 by 2 chart matrix; a smaller host may scroll rather than remove a chart.",
+        "confidence": "INFERRED"
+      },
+      {
+        "id": "camera-split",
+        "rule": "Preview and capture controls occupy roughly two-thirds of the workspace; camera configuration occupies roughly one-third.",
+        "confidence": "ESTIMATED"
+      }
+    ],
+    "viewport": {
+      "reference": {
+        "value": "1671-1672 x 941",
+        "unit": "device pixels",
+        "confidence": "EXACT"
+      },
+      "templateCandidate": {
+        "value": "1504 x 847",
+        "unit": "Qt logical pixels requested",
+        "confidence": "INFERRED",
+        "note": "Reversible desktop preview candidate preserving the reference aspect ratio; not a product requirement."
+      }
+    }
+  },
+  "componentTree": {
+    "sharedShell": [
+      "AdminTemplateWindow",
+      "  TopStatusBar",
+      "  Workspace",
+      "    SideActionRail",
+      "    ContentColumn",
+      "      PageTabBar",
+      "      PageStack"
+    ],
+    "main": [
+      "MainPage",
+      "  CameraPreviewPanel",
+      "  FvChartPanel",
+      "  PeakTrendPanel",
+      "  RealtimeResultsPanel",
+      "  AcquisitionParameterDrawer (overlay state)"
+    ],
+    "debug": [
+      "DebugPage",
+      "  RawSignalChart",
+      "  FitCurveChart",
+      "  FvChart",
+      "  PeakHistoryChart",
+      "  ResultSummaryStrip"
+    ],
+    "peakData": [
+      "PeakDataPage",
+      "  FilterToolbar",
+      "  PeakTrendPanel",
+      "  PeakRecordTable"
+    ],
+    "camera": [
+      "CameraPage",
+      "  PreviewAndCaptureColumn",
+      "  CameraControlColumn",
+      "  MotionZoomPanel (overlay state)"
+    ]
+  },
+  "components": [
+    {
+      "id": "top-status-bar",
+      "responsibility": "Display brand, device/acquisition state, data mode, theme and settings; native window controls remain exclusively in the operating-system title bar.",
+      "qtCandidate": "QFrame with QHBoxLayout",
+      "confidence": "INFERRED"
+    },
+    {
+      "id": "page-stack",
+      "responsibility": "Switch pages without stopping acquisition or clearing host data.",
+      "qtCandidate": "QStackedWidget",
+      "confidence": "INFERRED"
+    },
+    {
+      "id": "scientific-chart",
+      "responsibility": "Render axes, labels, units, series, data status and host-supplied samples.",
+      "qtCandidate": "Custom QWidget paintEvent or project chart component",
+      "confidence": "INFERRED"
+    },
+    {
+      "id": "parameter-drawer",
+      "responsibility": "Collect the eleven visible acquisition parameters and emit save/reset intent only.",
+      "qtCandidate": "Overlay QFrame with QFormLayout",
+      "confidence": "INFERRED"
+    },
+    {
+      "id": "peak-record-table",
+      "responsibility": "Present ordered PeakRecord rows with validity and run identity.",
+      "qtCandidate": "QTableView with a shared PeakRecord model; template uses QTableWidget",
+      "confidence": "INFERRED"
+    },
+    {
+      "id": "camera-preview",
+      "responsibility": "Present a host-supplied camera frame and independent camera state.",
+      "qtCandidate": "Custom QWidget or existing video surface",
+      "confidence": "INFERRED"
+    },
+    {
+      "id": "motion-zoom-panel",
+      "responsibility": "Emit display pan and zoom intent without implying physical camera movement.",
+      "qtCandidate": "Non-modal overlay QFrame",
+      "confidence": "INFERRED"
+    }
+  ],
+  "tokens": {
+    "color": [
+      {"name": "color.action.primary", "value": "#087CF0", "confidence": "ESTIMATED"},
+      {"name": "color.navigation.deep", "value": "#0755A9", "confidence": "ESTIMATED"},
+      {"name": "color.canvas", "value": "#EDF7FF", "confidence": "ESTIMATED"},
+      {"name": "color.surface", "value": "#FFFFFF", "confidence": "ESTIMATED"},
+      {"name": "color.panelHeader", "value": "#EDF7FF", "confidence": "ESTIMATED"},
+      {"name": "color.border", "value": "#DBEAF6", "confidence": "ESTIMATED"},
+      {"name": "color.text.primary", "value": "#152C49", "confidence": "ESTIMATED"},
+      {"name": "color.chart.primary", "value": "#0879EF", "confidence": "ESTIMATED"},
+      {"name": "color.status.error", "value": "#D92C36", "confidence": "ESTIMATED"}
+    ],
+    "spacing": [
+      {"name": "space.xs", "value": 6, "unit": "qt-logical-px-candidate", "confidence": "INFERRED"},
+      {"name": "space.sm", "value": 10, "unit": "qt-logical-px-candidate", "confidence": "INFERRED"},
+      {"name": "space.md", "value": 12, "unit": "qt-logical-px-candidate", "confidence": "INFERRED"},
+      {"name": "space.lg", "value": 16, "unit": "qt-logical-px-candidate", "confidence": "INFERRED"}
+    ],
+    "shape": [
+      {"name": "radius.control", "value": 7, "unit": "qt-logical-px-candidate", "confidence": "ESTIMATED"},
+      {"name": "radius.panel", "value": 11, "unit": "qt-logical-px-candidate", "confidence": "ESTIMATED"},
+      {"name": "radius.overlay", "value": 14, "unit": "qt-logical-px-candidate", "confidence": "ESTIMATED"}
+    ],
+    "typography": [
+      {
+        "name": "font.ui",
+        "value": ["Microsoft YaHei UI", "Segoe UI"],
+        "confidence": "INFERRED",
+        "note": "Implementation fallback only; the source font family is UNKNOWN."
+      }
+    ],
+    "control": [
+      {"name": "size.topBar", "value": 64, "unit": "qt-logical-px-candidate", "confidence": "ESTIMATED"},
+      {"name": "size.sideRail", "value": 88, "unit": "qt-logical-px-candidate", "confidence": "ESTIMATED"},
+      {"name": "size.tabBar", "value": 64, "unit": "qt-logical-px-candidate", "confidence": "ESTIMATED"}
+    ]
+  },
+  "responsive": {
+    "desktop": {
+      "rule": "Use expanding layouts and preserve chart and preview readability within the desktop workspace.",
+      "confidence": "INFERRED"
+    },
+    "minimumClientSize": {
+      "value": "1080 x 680",
+      "confidence": "INFERRED",
+      "note": "Template candidate only; use scrolling for dense content below the target calibration size."
+    },
+    "exactBreakpoints": {
+      "value": null,
+      "confidence": "UNKNOWN",
+      "note": "No alternate-width reference was supplied."
+    }
+  },
+  "implementationGuidance": [
+    "Keep the shared shell in one implementation and place business pages in a QStackedWidget or the host project's router.",
+    "Use real controls and layouts; never compile the six full screenshots as the working interface.",
+    "Keep NI, acquisition, calibration, algorithms, permissions, filesystem writes and camera ownership outside UI constructors.",
+    "Bind the debug peak history and peak-data page to one PeakRecord source; separate runId sequences and preserve invalid samples as null/gaps.",
+    "Do not display a concentration as valid until the host supplies a calibrated value and status.",
+    "Treat camera pan and zoom as display transforms unless a separate approved device contract states otherwise.",
+    "Validate keyboard focus, labels, contrast and reduced-motion behavior in the target application."
+  ],
+  "inconsistencies": [
+    {
+      "id": "INC-001",
+      "description": "Peak chart zoom behavior has conflicting descriptions in project notes: constrained interval/directional zoom versus unrestricted drag and wheel zoom.",
+      "handling": "Keep zoom actions visual-only in this template; confirm the interaction contract before product integration."
+    },
+    {
+      "id": "INC-002",
+      "description": "The samples display connected device, live acquisition and calibrated-looking result values, but no device, algorithm or calibration contract was supplied.",
+      "handling": "The template deliberately renders unconnected, simulated and uncalibrated states."
+    }
+  ],
+  "confidenceSummary": {
+    "EXACT": "Reference file identity, pixel dimensions, file hashes and the visibly present pages, panels and labels.",
+    "INFERRED": "Semantic component hierarchy, Qt control choices, shared shell, overlay behavior, spacing clusters and implementation constraints.",
+    "ESTIMATED": "Colors, radii, proportions and candidate logical control sizes derived from raster evidence.",
+    "UNKNOWN": "Exact font, DPR, client area, breakpoints, hidden interaction states, permissions, device and algorithm contracts, real units and calibration."
+  }
+}

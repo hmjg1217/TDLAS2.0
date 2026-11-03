@@ -1,0 +1,78 @@
+QWidget#rootCanvas {
+    background: #eaf6ff;
+    color: #17365f;
+    font-family: "Microsoft YaHei UI", "Segoe UI";
+}
+
+QFrame#loginForm {
+    background: transparent;
+    border: none;
+}
+
+QLineEdit[uiRole="loginField"] {
+    background: #eef7fd;
+    border: none;
+    border-bottom: 1px solid #9aa9ca;
+    color: #4f6087;
+    padding: 0 10px;
+    selection-background-color: #168af3;
+    font-size: 18px;
+}
+
+QLineEdit[uiRole="loginField"]:hover {
+    border-bottom-color: #5d87c6;
+}
+
+QLineEdit[uiRole="loginField"]:focus {
+    border-bottom: 2px solid #087ee9;
+}
+
+QLineEdit[uiRole="loginField"]:disabled {
+    color: #99a5bb;
+    border-bottom-color: #c6cfdf;
+}
+
+QPushButton#loginButton {
+    border: none;
+    border-radius: 14px;
+    color: white;
+    font-size: 21px;
+    font-weight: 500;
+    padding: 0 20px;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 1, y2: 0,
+        stop: 0 #06a7e9,
+        stop: 1 #006ff1
+    );
+}
+
+QPushButton#loginButton:hover {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 1, y2: 0,
+        stop: 0 #0db4f2,
+        stop: 1 #0b78f5
+    );
+}
+
+QPushButton#loginButton:pressed {
+    background: #0568d9;
+}
+
+QPushButton#loginButton:focus {
+    border: 2px solid rgba(255, 255, 255, 220);
+}
+
+QPushButton#loginButton:disabled {
+    color: rgba(255, 255, 255, 180);
+    background: #9dbbd7;
+}
+
+QLabel#loginMessage {
+    background: transparent;
+    color: #526b8b;
+    font-size: 12px;
+}
+
+QLabel#loginMessage[severity="error"] {
+    color: #9c3542;
+}

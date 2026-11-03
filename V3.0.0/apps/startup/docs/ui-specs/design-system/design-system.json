@@ -1,0 +1,245 @@
+{
+  "schemaVersion": "1.0.0",
+  "mode": "system",
+  "metadata": {
+    "title": "TDLAS startup and login visual system",
+    "generatedAt": "2026-11-02",
+    "skill": "arx-ui-spec",
+    "skillVersion": "unversioned-local",
+    "companionSkill": "gpt-ui-to-qt-spec@1.0.0",
+    "status": "DRAFT"
+  },
+  "source": {
+    "type": "raster-reference-set",
+    "files": [
+      {
+        "refId": "S-01",
+        "path": "../../../resources/reference/startup_splash.png",
+        "purpose": "startup brand state",
+        "pixelWidth": 1774,
+        "pixelHeight": 887,
+        "pixelDimensionsConfidence": "EXACT",
+        "hasAlpha": true,
+        "sha256": "BA5DEC8F8D8A498E5DCE84C7EC4D0BDD8E255969389D3F0D6E6E3EB73D19A283"
+      },
+      {
+        "refId": "S-02",
+        "path": "../../../resources/reference/login_reference.png",
+        "purpose": "login idle state",
+        "pixelWidth": 1671,
+        "pixelHeight": 941,
+        "pixelDimensionsConfidence": "EXACT",
+        "hasAlpha": false,
+        "sha256": "FBE03981A6BF62DEABB8E34726B8FDEB495174AF84BE417E2FE73F6A17E44EBB"
+      }
+    ],
+    "limitations": [
+      "Raster pixels do not establish Qt logical pixels, client area, DPR, OS scaling or breakpoint behavior.",
+      "Only the visible startup brand state and login idle state are evidenced.",
+      "Authentication, roles, persistence, loading progress and navigation are not evidenced by the images."
+    ]
+  },
+  "screenInventory": [
+    {
+      "screenId": "startup-brand",
+      "refId": "S-01",
+      "summary": "Centered translucent brand card with logo, product title, descriptor, attribution and spectroscopy illustration.",
+      "viewportClass": "desktop-raster",
+      "viewportConfidence": "EXACT"
+    },
+    {
+      "screenId": "login",
+      "refId": "S-02",
+      "summary": "Desktop split composition with scientific illustration on the left and brand plus credentials form on the right.",
+      "viewportClass": "desktop-raster",
+      "viewportConfidence": "EXACT"
+    }
+  ],
+  "layout": {
+    "primitives": [
+      {
+        "id": "reference-canvas",
+        "rule": "Preserve the source aspect ratio and center the image; letterbox rather than stretch.",
+        "confidence": "INFERRED"
+      },
+      {
+        "id": "login-split",
+        "rule": "Approximately 62 percent illustration and 38 percent authentication area within the rounded card.",
+        "confidence": "ESTIMATED"
+      },
+      {
+        "id": "login-form-stack",
+        "rule": "Username field, password field and primary button form one vertical semantic stack.",
+        "confidence": "INFERRED"
+      }
+    ],
+    "fixedCompositionException": {
+      "appliesTo": [
+        "startup-brand",
+        "login"
+      ],
+      "rule": "Normalized reference coordinates may align raster artwork and live controls, but controls inside each region must use Qt layouts.",
+      "confidence": "INFERRED"
+    }
+  },
+  "componentTree": {
+    "startup-brand": [
+      "StartupPage",
+      "  BrandCanvas",
+      "    BrandMark",
+      "    ProductTitle",
+      "    ProductDescriptor",
+      "    SpectroscopyArtwork",
+      "    Attribution"
+    ],
+    "login": [
+      "LoginPage",
+      "  ReferenceCanvas",
+      "    IllustrationRegion",
+      "    AuthenticationRegion",
+      "      BrandHeader",
+      "      CredentialForm",
+      "        UsernameField",
+      "        PasswordField",
+      "        LoginButton",
+      "        StatusMessage"
+    ]
+  },
+  "components": [
+    {
+      "id": "reference-canvas",
+      "responsibility": "Scale and center the approved raster without distortion.",
+      "qtCandidate": "QWidget paintEvent",
+      "confidence": "INFERRED"
+    },
+    {
+      "id": "username-field",
+      "responsibility": "Collect the account identifier with a persistent accessible name.",
+      "qtCandidate": "QLineEdit",
+      "confidence": "INFERRED"
+    },
+    {
+      "id": "password-field",
+      "responsibility": "Collect a masked password without storing it.",
+      "qtCandidate": "QLineEdit::Password",
+      "confidence": "INFERRED"
+    },
+    {
+      "id": "login-button",
+      "responsibility": "Submit user intent exactly once to the host authentication layer.",
+      "qtCandidate": "QPushButton",
+      "confidence": "INFERRED"
+    }
+  ],
+  "tokens": {
+    "color": [
+      {
+        "name": "canvas.coolBlue",
+        "value": "#CBE4FC",
+        "confidence": "ESTIMATED",
+        "note": "Representative raster sample, not a source design token."
+      },
+      {
+        "name": "surface.login",
+        "value": "#EEF7FD",
+        "confidence": "ESTIMATED",
+        "note": "Candidate opaque field surface used to cover baked raster controls."
+      },
+      {
+        "name": "brand.deepBlue",
+        "value": "#043491",
+        "confidence": "ESTIMATED"
+      },
+      {
+        "name": "action.start",
+        "value": "#06A7E9",
+        "confidence": "ESTIMATED"
+      },
+      {
+        "name": "action.end",
+        "value": "#006FF1",
+        "confidence": "ESTIMATED"
+      },
+      {
+        "name": "field.divider",
+        "value": "#9AA9CA",
+        "confidence": "ESTIMATED"
+      }
+    ],
+    "spacing": [
+      {
+        "name": "space.1",
+        "value": 8,
+        "unit": "qt-logical-px-candidate",
+        "confidence": "INFERRED"
+      },
+      {
+        "name": "space.2",
+        "value": 18,
+        "unit": "qt-logical-px-candidate",
+        "confidence": "ESTIMATED"
+      },
+      {
+        "name": "space.3",
+        "value": 34,
+        "unit": "qt-logical-px-candidate",
+        "confidence": "ESTIMATED"
+      }
+    ],
+    "shape": [
+      {
+        "name": "radius.primaryButton",
+        "value": 14,
+        "unit": "qt-logical-px-candidate",
+        "confidence": "ESTIMATED"
+      }
+    ],
+    "typography": [
+      {
+        "name": "font.ui",
+        "value": [
+          "Microsoft YaHei UI",
+          "Segoe UI"
+        ],
+        "confidence": "INFERRED",
+        "note": "Implementation fallback only; exact source font is UNKNOWN."
+      }
+    ]
+  },
+  "responsive": {
+    "desktop": {
+      "rule": "Keep the source aspect ratio and map live controls through the fitted image rectangle.",
+      "confidence": "INFERRED"
+    },
+    "minimumClientSize": {
+      "value": "960x540",
+      "confidence": "INFERRED",
+      "note": "Reversible template candidate, not established by the images."
+    },
+    "mobileOrReflow": {
+      "value": null,
+      "confidence": "UNKNOWN",
+      "note": "No mobile or narrow-window reference was supplied."
+    }
+  },
+  "implementationGuidance": [
+    "Use real QLineEdit and QPushButton controls for the login form.",
+    "Keep credential storage, authentication, roles and navigation outside the UI class.",
+    "Do not infer progress or a startup duration from S-01.",
+    "Use the original raster only as approved visual evidence and verify its packaging rights before release.",
+    "Calibrate the temporary normalized overlay coordinates after target client size, DPR, font and window chrome are confirmed."
+  ],
+  "inconsistencies": [
+    {
+      "id": "INC-001",
+      "description": "S-01 uses a transparent 2:1 canvas while S-02 uses an opaque approximately 16:9 canvas.",
+      "handling": "Treat them as two screen-specific aspect ratios, not one global viewport token."
+    }
+  ],
+  "confidenceSummary": {
+    "EXACT": "File identity, pixel dimensions, alpha presence and hashes.",
+    "INFERRED": "Semantic components, aspect-ratio preservation, desktop form stack and implementation mapping.",
+    "ESTIMATED": "Region geometry, raster-derived colors, spacing and radii.",
+    "UNKNOWN": "Target logical size, DPR, exact fonts, animation, authentication, roles, errors and navigation."
+  }
+}

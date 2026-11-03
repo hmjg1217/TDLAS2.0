@@ -1,0 +1,267 @@
+{
+  "schemaVersion": "1.0.0",
+  "mode": "system",
+  "metadata": {
+    "title": "TDLAS client workspace visual system",
+    "generatedAt": "2026-11-02",
+    "skill": "arx-ui-spec",
+    "skillVersion": "unversioned-local",
+    "companionSkill": "gpt-ui-to-qt-spec@1.0.0",
+    "status": "DRAFT"
+  },
+  "source": {
+    "type": "raster-reference-set",
+    "files": [
+      {
+        "refId": "C-01",
+        "path": "../../../resources/reference/c01-main.png",
+        "purpose": "client main page default state",
+        "pixelWidth": 1672,
+        "pixelHeight": 941,
+        "pixelDimensionsConfidence": "EXACT",
+        "sha256": "055B41394AFCA0E9182C90BE978210A5F473227AB48F85F4E86A3FFFB7207E2E"
+      },
+      {
+        "refId": "C-02",
+        "path": "../../../resources/reference/c02-camera.png",
+        "purpose": "client camera page default state",
+        "pixelWidth": 1671,
+        "pixelHeight": 941,
+        "pixelDimensionsConfidence": "EXACT",
+        "sha256": "18659BAC8D9B59ED5275BD2C608E6A678DB4F538681CE7484AE8CA9B3F1DD9DA"
+      },
+      {
+        "refId": "C-03",
+        "path": "../../../resources/reference/c03-camera-motion.png",
+        "purpose": "client camera page with motion and zoom panel",
+        "pixelWidth": 1670,
+        "pixelHeight": 941,
+        "pixelDimensionsConfidence": "EXACT",
+        "sha256": "58E5D5BDF2718053C9BB15936F7A85EA39F6DE89D6E82CDB362CC60388C46508"
+      }
+    ],
+    "limitations": [
+      "Raster dimensions do not establish Qt logical pixels, client area, DPR, Windows scaling or exact fonts.",
+      "Only visible default and camera-overlay states are evidenced; hidden hover, focus, loading, failure and empty states remain unknown.",
+      "Two visible client tabs do not prove the authorization contract; trusted business logic must enforce access.",
+      "The references do not prove NI protocol, acquisition timing, camera ownership, algorithm validity, units or calibration.",
+      "Reference images remain evidence only and are not compiled as full-screen backgrounds."
+    ]
+  },
+  "screenInventory": [
+    {
+      "screenId": "client-main",
+      "refId": "C-01",
+      "summary": "Shared shell with camera preview, FV curve, peak trend and three result metrics.",
+      "viewportClass": "desktop-raster",
+      "viewportConfidence": "EXACT"
+    },
+    {
+      "screenId": "client-camera",
+      "refId": "C-02",
+      "summary": "Large preview and capture actions with device, image and media controls.",
+      "viewportClass": "desktop-raster",
+      "viewportConfidence": "EXACT"
+    },
+    {
+      "screenId": "client-camera-motion",
+      "refId": "C-03",
+      "summary": "Camera page with a non-modal image-pan and zoom overlay.",
+      "viewportClass": "desktop-raster",
+      "viewportConfidence": "EXACT"
+    }
+  ],
+  "layout": {
+    "primitives": [
+      {
+        "id": "application-shell",
+        "rule": "Persistent top status bar, left action rail, two client page tabs and a stacked content workspace.",
+        "confidence": "INFERRED"
+      },
+      {
+        "id": "main-four-panel-grid",
+        "rule": "Use a responsive two-column by two-row grid for preview, FV curve, peak trend and real-time results.",
+        "confidence": "INFERRED"
+      },
+      {
+        "id": "camera-split",
+        "rule": "Preview and capture controls occupy roughly two-thirds of the workspace; camera configuration occupies roughly one-third.",
+        "confidence": "ESTIMATED"
+      },
+      {
+        "id": "overlay-panel",
+        "rule": "Motion and zoom controls overlay the camera control column without reflowing the page and without implying physical camera movement.",
+        "confidence": "INFERRED"
+      },
+      {
+        "id": "parameter-drawer",
+        "rule": "The shared eleven-field acquisition form overlays the main workspace; this state comes from the supplied design contract, not a client raster.",
+        "confidence": "INFERRED"
+      }
+    ],
+    "viewport": {
+      "reference": {
+        "value": "1670-1672 x 941",
+        "unit": "device pixels",
+        "confidence": "EXACT"
+      },
+      "templateCandidate": {
+        "value": "1504 x 847",
+        "unit": "Qt logical pixels requested",
+        "confidence": "INFERRED",
+        "note": "Reversible desktop preview candidate preserving the reference aspect ratio; not a product requirement."
+      }
+    }
+  },
+  "componentTree": {
+    "sharedShell": [
+      "ClientTemplateWindow",
+      "  TopStatusBar",
+      "  Workspace",
+      "    SideActionRail",
+      "    ContentColumn",
+      "      ClientPageTabBar",
+      "      PageStack"
+    ],
+    "main": [
+      "ClientMainPage",
+      "  CameraPreviewPanel",
+      "  FvChartPanel",
+      "  PeakTrendPanel",
+      "  RealtimeResultsPanel",
+      "  AcquisitionParameterDrawer (contract-derived overlay)"
+    ],
+    "camera": [
+      "ClientCameraPage",
+      "  PreviewAndCaptureColumn",
+      "  CameraControlColumn",
+      "    DeviceFormatPanel",
+      "    CameraParameterPanel",
+      "    MediaPanel",
+      "  MotionZoomPanel (overlay state)"
+    ]
+  },
+  "components": [
+    {
+      "id": "top-status-bar",
+      "responsibility": "Display brand, device/acquisition state, data mode and application actions without claiming a connection the host has not supplied. Native Windows chrome owns minimize, maximize and close.",
+      "qtCandidate": "QFrame with QHBoxLayout",
+      "confidence": "INFERRED"
+    },
+    {
+      "id": "client-page-stack",
+      "responsibility": "Expose only the main and camera pages in the client shell while leaving authorization to a trusted layer.",
+      "qtCandidate": "QStackedWidget",
+      "confidence": "INFERRED"
+    },
+    {
+      "id": "scientific-chart",
+      "responsibility": "Render axes, labels, units, series and explicit simulated or invalid data state.",
+      "qtCandidate": "Custom QWidget paintEvent or project chart component",
+      "confidence": "INFERRED"
+    },
+    {
+      "id": "camera-preview",
+      "responsibility": "Present a host-supplied frame and camera state independently from measurement acquisition state.",
+      "qtCandidate": "Custom QWidget or existing video surface",
+      "confidence": "INFERRED"
+    },
+    {
+      "id": "motion-zoom-panel",
+      "responsibility": "Emit display pan and zoom intent without implying physical camera movement.",
+      "qtCandidate": "Non-modal overlay QFrame",
+      "confidence": "INFERRED"
+    },
+    {
+      "id": "acquisition-parameter-drawer",
+      "responsibility": "Collect the eleven documented acquisition fields and emit save intent only.",
+      "qtCandidate": "Overlay QFrame with QFormLayout",
+      "confidence": "INFERRED"
+    }
+  ],
+  "tokens": {
+    "color": [
+      {"name": "color.action.primary", "value": "#087CF0", "confidence": "ESTIMATED"},
+      {"name": "color.navigation.deep", "value": "#0755A9", "confidence": "ESTIMATED"},
+      {"name": "color.canvas", "value": "#EDF7FF", "confidence": "ESTIMATED"},
+      {"name": "color.surface", "value": "#FFFFFF", "confidence": "ESTIMATED"},
+      {"name": "color.panelHeader", "value": "#EDF7FF", "confidence": "ESTIMATED"},
+      {"name": "color.border", "value": "#DBEAF6", "confidence": "ESTIMATED"},
+      {"name": "color.text.primary", "value": "#152C49", "confidence": "ESTIMATED"},
+      {"name": "color.chart.primary", "value": "#0879EF", "confidence": "ESTIMATED"},
+      {"name": "color.status.error", "value": "#D92C36", "confidence": "ESTIMATED"}
+    ],
+    "spacing": [
+      {"name": "space.xs", "value": 6, "unit": "qt-logical-px-candidate", "confidence": "INFERRED"},
+      {"name": "space.sm", "value": 10, "unit": "qt-logical-px-candidate", "confidence": "INFERRED"},
+      {"name": "space.md", "value": 12, "unit": "qt-logical-px-candidate", "confidence": "INFERRED"},
+      {"name": "space.lg", "value": 16, "unit": "qt-logical-px-candidate", "confidence": "INFERRED"}
+    ],
+    "shape": [
+      {"name": "radius.control", "value": 7, "unit": "qt-logical-px-candidate", "confidence": "ESTIMATED"},
+      {"name": "radius.panel", "value": 11, "unit": "qt-logical-px-candidate", "confidence": "ESTIMATED"},
+      {"name": "radius.overlay", "value": 14, "unit": "qt-logical-px-candidate", "confidence": "ESTIMATED"}
+    ],
+    "typography": [
+      {
+        "name": "font.ui",
+        "value": ["Microsoft YaHei UI", "Segoe UI"],
+        "confidence": "INFERRED",
+        "note": "Implementation fallback only; the source font family is UNKNOWN."
+      }
+    ],
+    "control": [
+      {"name": "size.topBar", "value": 64, "unit": "qt-logical-px-candidate", "confidence": "ESTIMATED"},
+      {"name": "size.sideRail", "value": 88, "unit": "qt-logical-px-candidate", "confidence": "ESTIMATED"},
+      {"name": "size.tabBar", "value": 64, "unit": "qt-logical-px-candidate", "confidence": "ESTIMATED"}
+    ]
+  },
+  "responsive": {
+    "desktop": {
+      "rule": "Use expanding layouts and preserve chart, preview and primary controls within the desktop workspace.",
+      "confidence": "INFERRED"
+    },
+    "minimumClientSize": {
+      "value": "1080 x 680",
+      "confidence": "INFERRED",
+      "note": "Template candidate only; formal minimum size requires target-environment calibration."
+    },
+    "exactBreakpoints": {
+      "value": null,
+      "confidence": "UNKNOWN",
+      "note": "No alternate-width reference was supplied."
+    }
+  },
+  "implementationGuidance": [
+    "Keep one shared shell and place the two client pages in QStackedWidget or the host router.",
+    "Use real controls and layouts; never compile the three full screenshots as the working interface.",
+    "Keep NI, acquisition, calibration, algorithms, permissions, filesystem writes and camera ownership outside UI constructors.",
+    "Do not display concentration as valid until the host supplies calibrated value and validity state.",
+    "Treat camera pan and zoom as display transforms unless an approved device contract states otherwise.",
+    "Page visibility is not authorization; validate client access in the trusted session or application layer.",
+    "Validate keyboard focus, labels, contrast and target DPI in the final application."
+  ],
+  "inconsistencies": [
+    {
+      "id": "INC-C-001",
+      "description": "The samples show connected device, active acquisition and calibrated-looking values, but no device, algorithm or calibration contract was supplied.",
+      "handling": "The template deliberately renders unconnected, simulated and uncalibrated states."
+    },
+    {
+      "id": "INC-C-002",
+      "description": "The client references show only two top tabs, while no trusted authorization contract was supplied.",
+      "handling": "Expose the two visible tabs in this UI template and keep all real authorization in the host layer."
+    },
+    {
+      "id": "INC-C-003",
+      "description": "The shared parameter drawer is required by the written design contract but is not shown in the three client rasters.",
+      "handling": "Implement it as a reversible contract-derived UI state and do not claim raster fidelity for that state."
+    }
+  ],
+  "confidenceSummary": {
+    "EXACT": "Reference file identity, pixel dimensions, hashes and visibly present pages, panels and labels.",
+    "INFERRED": "Semantic component hierarchy, Qt choices, shared shell, camera overlay, parameter-drawer contract and implementation boundaries.",
+    "ESTIMATED": "Colors, radii, proportions and candidate logical control sizes derived from raster evidence.",
+    "UNKNOWN": "Exact font, DPR, client area, breakpoints, hidden states, permissions, device and algorithm contracts, real units and calibration."
+  }
+}

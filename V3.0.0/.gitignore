@@ -1,0 +1,7 @@
+/build/
+/build-*/
+/dist/
+/artifacts/captures/
+/.vs/
+*.user
+CMakeUserPresets.json
